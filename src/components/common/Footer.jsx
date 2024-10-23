@@ -16,19 +16,19 @@ const Footer = () => {
         <h3 className='mb-3'>Our Services</h3>
           <ul>
             <li>
-              <a href=''>Specility Construction</a>
+              <a href='/projects'>Specility Construction</a>
             </li>
             <li>
-              <a href=''>Civil Construction</a>
+              <a href='/projects'>Civil Construction</a>
             </li>
             <li>
-              <a href=''>Residential Construction</a>
+              <a href='/projects'>Residential Construction</a>
             </li>
             <li>
-              <a href=''>Coorporate Construction</a>
+              <a href='/projects'>Coorporate Construction</a>
             </li>
             <li>
-              <a href=''>Bussines Construction</a>
+              <a href='/projects'>Bussines Construction</a>
             </li>
           </ul>
         </div>
@@ -36,19 +36,19 @@ const Footer = () => {
         <h3 className='mb-3'>Quick Likns</h3>
           <ul>
             <li>
-              <a href=''>About us</a>
+              <a href='/about'>About us</a>
             </li>
             <li>
-              <a href=''>Services</a>
+              <a href='/services'>Services</a>
             </li>
             <li>
-              <a href=''>Projects</a>
+              <a href='/projects'>Projects</a>
             </li>
             <li>
-              <a href=''>Blogs</a>
+              <a href='/blogs'>Blogs</a>
             </li>
             <li>
-              <a href=''>Contact us</a>
+              <a href='/contact-us'>Contact us</a>
             </li>
           </ul>
         </div>
@@ -56,13 +56,13 @@ const Footer = () => {
         <h3 className='mb-3'>Contact Us</h3>
           <ul>
             <li>
-              <a href=''>abc@abc.com</a>
+              <a href='#'>abc@abc.com</a>
             </li>
             <li>
-              <a href=''>(971-1111111155|)</a>
+              <a href='#'>(971-1111111155|)</a>
             </li>
             <li>
-              <a href=''>Abu Dhabi , United Arab Emirates</a>
+              <a href='#'>Abu Dhabi , United Arab Emirates</a>
             </li>
           </ul>
         </div>

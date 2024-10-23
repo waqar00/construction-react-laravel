@@ -3,28 +3,19 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import teamImg from '../../assets/images/team1.jpg';
 import {default as AboutNew} from '../common/About'
+import Hero from '../common/Hero';
 const About = () => {
   return (
     <>
        <Header/>
-        <section className='section-7'>
-          <div className='hero d-flex align-items-center text-white'>
-            <div className='container'>
-                <div className='text-left'>
-                  <span>Quality. Integrity. Value. </span>
-                  <h1>About Us</h1>
-                  <p>Crafting dreams with precision and excellence </p>
-                </div>
-            </div>
-          </div>
-        </section>
+       <Hero preHeading={'Quality. Integrity. Value. '} heading={'About Us'} text={'Crafting dreams with precision and excellence'}/>
         <AboutNew/>
         {/* Out Team */}
         <section className='section-8 bg-light py-5'>
           <div className="container">
           <div className='section-header text-center'>
-                  <span>Our Team </span>
-                  <h1>About Us</h1>
+                  <span> Team </span>
+                  <h1>Our Team</h1>
                   <p>Crafting dreams with precision and excellence </p>
             </div>
             <div className="row pt-4">
