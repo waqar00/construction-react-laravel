@@ -13,6 +13,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Dashboard from './components/backend/Dashboard';
 import RequiredAuth from './components/common/RequiredAuth';
+import ShowServices from './components/backend/services/ShowServices';
+import {default as CreateService} from './components/backend/services/Create';
+import {default as EditService} from './components/backend/services/Edit';
+import {default as ShowProject} from './components/backend/project/Show';
+import {default as CreateProject} from './components/backend/project/Create';
+import {default as EditProject} from './components/backend/project/Edit';
 function App() {
   return (
     <>
@@ -28,6 +34,36 @@ function App() {
         <Route  path='/admin/dashboard' element={
           <RequiredAuth>
             <Dashboard/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/showServices' element={
+          <RequiredAuth>
+            <ShowServices/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/showServices/create' element={
+          <RequiredAuth>
+            <CreateService/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/showServices/edit/:id' element={
+          <RequiredAuth>
+            <EditService/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/projects' element={
+          <RequiredAuth>
+            <ShowProject/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/projects/create' element={
+          <RequiredAuth>
+            <CreateProject/>
+          </RequiredAuth>
+          }/>
+          <Route  path='/admin/projects/edit/:id' element={
+          <RequiredAuth>
+            <EditProject/>
           </RequiredAuth>
           }/>
       </Routes>

@@ -14,13 +14,13 @@ const Sidebar = () => {
                             <NavLink to="/admin/dashboard">Dashboaard</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/services">Services</NavLink>
+                            <NavLink to="/admin/showServices">Services</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/projects">Projects</NavLink>
+                            <NavLink to="/admin/projects">Projects</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/articles">Articles</NavLink>
+                            <NavLink to="/admin/articles">Articles</NavLink>
                         </li>
                         <li>
                             <button onClick={logout} className='btn btn-primary mt-4'>Logout</button>
