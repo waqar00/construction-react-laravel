@@ -180,7 +180,7 @@ const Edit = ({placeholder}) => {
                                            {
                                                 project.image && <img className='w-50 rounded-4' src={fileUrl + 'images/projects/' + project.image.url} alt="" />
                                             }
-                                        </div>
+                                    </div>
                                     <div className="mb-3">
                                         <label htmlFor="" className='form-label '>status</label>
                                         <select                                   {

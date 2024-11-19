@@ -31,9 +31,14 @@ class ServiceController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function serviceDetails(Request $request ,$slug)
     {
-        //
+        $service =Service::with('image')->whereSlug($slug)->first();
+        return response()->json([
+            'status' => true,
+            'data' => $service,
+            'message' => 'Service Details.'
+        ]);
     }
 
     /**

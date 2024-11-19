@@ -122,27 +122,30 @@ const Create = ({placeholder}) => {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="" className='form-label'>Sector</label>
-                                        <input
-                                            type="text"
-                                            name="sector"
-                                            className={`form-control ${errors.sector && 'is-invalid'}`}
-                                            placeholder="Enter Sector?"
-                                            {
-                                            ...register('sector', { required: 'the field is required' })
-                                            }
-                                        />
+                                        <select className="form-control" name="sector" id="sector"
+                                        {
+                                            ...register('sector')
+                                        }
+                                        >
+                                            <option value="">Sector</option>
+                                            <option value="Health">Health</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Conrporate">Conrporate</option>
+                                        </select>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="" className='form-label'>Construction type</label>
-                                        <input
-                                            type="text"
-                                            name="construction_type"
-                                            className={`form-control ${errors.construction_type && 'is-invalid'}`}
-                                            placeholder="Construction type?"
-                                            {
-                                            ...register('construction_type', { required: 'the field is required' })
-                                            }
-                                        />
+                                        <select className="form-control" name="construction_type" id="construction_type"
+                                        {
+                                            ...register('construction_type')
+                                        }
+                                        >
+                                            <option value="">Construction Type</option>
+                                            <option value="Residential Construction">Residential Construction</option>
+                                            <option value="Industrial Construction">Industrial Construction</option>
+                                            <option value="Conmmercial Construction">Conmmercial Construction</option>
+                                            <option value="Infrastucture Construction">Infrastucture Construction</option>
+                                        </select>
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="" className='form-label'>Image</label>

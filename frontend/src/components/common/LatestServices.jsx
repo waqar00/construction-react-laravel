@@ -1,12 +1,12 @@
 import React, {useState ,useEffect} from 'react'
 import { apiUrl,fileUrl } from './http';
+import { Link } from 'react-router-dom';
 
 const LatestServices = () => {
     const [services , setServices] = useState([])
 const getLatetsServices = async () => {
   const res = await fetch(apiUrl + 'get-latest-services?limit=4');
   const result = await res.json();
-  console.log(result);
   setServices(result.data);
 }
 useEffect(()=>{
@@ -40,15 +40,13 @@ useEffect(()=>{
                           <p>{ service.short_desc}
                           </p>
                         </div>
-                        <a href='' className='btn btn-primary'>Read More</a>
+                        <Link to={`services/${service.slug}`} className='btn btn-primary'>Read More</Link>
                       </div>
                     </div>
                   </div>
                 )
             })
         }
-
-
        </div>
      </div>
   </section>

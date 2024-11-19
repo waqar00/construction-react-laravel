@@ -6,7 +6,6 @@ import Footer from '../common/Footer'
 const ContactUs = () => {
   return (
     <>
-      <Header />
       <main>
         <Hero
           preHeading='Quality. Integrity. Value.'
@@ -75,7 +74,6 @@ const ContactUs = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </>
 
   )

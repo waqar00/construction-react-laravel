@@ -1,11 +1,11 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, Router, RouterProvider, Routes } from 'react-router-dom';
 import Home from './components/frontend/Home';
 import About from './components/frontend/About';
 import './assets/css/style.scss'
-import Services from './components/frontend/Services';
-import Projects from './components/frontend/Projects';
+import Services, { fetchAllServices } from './components/frontend/Services';
+import Projects, { fetchAllProjects } from './components/frontend/Projects';
 import Blogs from './components/frontend/Blogs';
 import ContactUs from './components/frontend/ContactUs';
 import Login from './components/backend/Login';
@@ -19,15 +19,31 @@ import {default as EditService} from './components/backend/services/Edit';
 import {default as ShowProject} from './components/backend/project/Show';
 import {default as CreateProject} from './components/backend/project/Create';
 import {default as EditProject} from './components/backend/project/Edit';
+import {default as ShowBlog} from './components/backend/blog/Show';
+import {default as CreateBlog} from './components/backend/blog/Create';
+import {default as EditBlog} from './components/backend/blog/Edit';
+import ServiceDetails from './components/frontend/ServiceDetails';
+import Layout from './components/layout/Layout';
 function App() {
-  return (
-    <>
-    <BrowserRouter>
-      <Routes>
-        <Route  path='/' element={<Home/>}/>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<Layout/>}>
+        <Route  path='' element={<Home/>}/>
         <Route  path='/about' element={<About/>}/>
-        <Route  path='/services' element={<Services/>}/>
-        <Route  path='/projects' element={<Projects/>}/>
+        <Route 
+            loader={fetchAllServices} 
+            path='/services' 
+            element={<Services/>}
+         />
+        <Route  
+            path='/services/:slug' 
+            element={<ServiceDetails/>}
+        />
+        <Route  
+          loader={fetchAllProjects}
+          path='/projects' 
+          element={<Projects/>}
+        />
         <Route  path='/blogs' element={<Blogs/>}/>
         <Route  path='/contact-us' element={<ContactUs/>}/>
         <Route  path='/admin/login' element={<Login/>}/>
@@ -66,11 +82,30 @@ function App() {
             <EditProject/>
           </RequiredAuth>
           }/>
-      </Routes>
-    </BrowserRouter>
+          <Route  path='/admin/blogs' element={
+            <RequiredAuth>
+              <ShowBlog/>
+            </RequiredAuth>
+          }/>
+          <Route  path='/admin/blog/create' element={
+            <RequiredAuth>
+              <CreateBlog/>
+            </RequiredAuth>
+          }/>
+          <Route  path='/admin/blogs/edit/:id' element={
+          <RequiredAuth>
+            <EditBlog/>
+          </RequiredAuth>
+          }/>
+      </Route>
+    )
+  )
+  return (
+    <>
     <ToastContainer
        position="top-right"
      />
+     <RouterProvider router={router}/>
     </>
   )
 }

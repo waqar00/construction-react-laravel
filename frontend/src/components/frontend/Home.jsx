@@ -14,11 +14,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import About from '../common/About';
 import LatestServices from '../common/LatestServices';
+import LatestProjects from '../common/LatestProjects';
+import LatestBlogs from '../common/LatestBlogs';
+import { Link } from 'react-router-dom';
 const Home = () => {
 
   return (
     <>
-    <Header/>
+    {/* <Header/> */}
      <main>
        <section className='section-1'>
          <div className='hero d-flex align-items-center text-white'>
@@ -27,8 +30,8 @@ const Home = () => {
                 <span>Welcome Amaizing Construction</span>
                 <h1>Crafting dreams with<br/> precision and excellence</h1>
                 <p>Crafting dreams with precision and excellence </p>
-                <a className='btn btn-primary large'>Contact Now</a>
-                <a className='btn btn-secondry large'>View Projects</a>
+                <Link to='/contact-us' className='btn btn-primary large'>Contact Now</Link>
+                <Link to={`/projects`} className='btn btn-secondry large'>View Projects</Link>
               </div>
            </div>
          </div>
@@ -92,89 +95,7 @@ const Home = () => {
          </div>
        </div>
        {/* Our Projects */}
-       <section className='section-3 py-5'>
-         <div className='container-fluid py-5'>
-          <div className='section-header text-center'>
-            <span>Our Projects</span>
-            <h2 >Our Projects services</h2>
-            <p>Crafting dreams with precision and excellence</p>
-            </div>
-           <div className='row'>
-              <div className="col-md-3">
-                <div className="item">
-                  <div className="service-image">
-                    <img src={projectImage} className='w-100'/>
-                  </div>
-                  <div className="service-body">
-                    <div className="service-title">
-                      <h3>Dubai Projects</h3>
-                    </div>
-                    <div className="service-content">
-                      <p>Crafting dreams with precision and excellence
-                      Crafting dreams with precision and excellence
-                      </p>
-                    </div>
-                    <a href='' className='btn btn-primary'>Read More</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3">
-                <div className="item">
-                  <div className="service-image">
-                    <img src={projectImage} className='w-100'/>
-                  </div>
-                  <div className="service-body">
-                    <div className="service-title">
-                      <h3>Abu Dhabi Projects</h3>
-                    </div>
-                    <div className="service-content">
-                      <p>Crafting dreams with precision and excellence
-                      Crafting dreams with precision and excellence
-                      </p>
-                    </div>
-                    <a href='' className='btn btn-primary'>Read More</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3">
-                <div className="item">
-                  <div className="service-image">
-                    <img src={projectImage} className='w-100'/>
-                  </div>
-                  <div className="service-body">
-                    <div className="service-title">
-                      <h3>Ajman projects</h3>
-                    </div>
-                    <div className="service-content">
-                      <p>Crafting dreams with precision and excellence
-                      Crafting dreams with precision and excellence
-                      </p>
-                    </div>
-                    <a href='' className='btn btn-primary'>Read More</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-3">
-                <div className="item">
-                  <div className="service-image">
-                    <img src={projectImage} className='w-100'/>
-                  </div>
-                  <div className="service-body">
-                    <div className="service-title">
-                      <h3>Sharjah Projects</h3>
-                    </div>
-                    <div className="service-content">
-                      <p>Crafting dreams with precision and excellence
-                      Crafting dreams with precision and excellence
-                      </p>
-                    </div>
-                    <a href='' className='btn btn-primary'>Read More</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-       </section>
+       <LatestProjects/>
        {/* Our tesitimonial */}
        <section className="section-5 py-5">
          <div className="container">
@@ -337,58 +258,9 @@ const Home = () => {
               </Swiper>
        </section>
        {/* Our logs */}
-       <section className='section-6 bg-light py-5'>
-        <div className='container'>
-         <div className='section-header text-center'>
-            <span>Blog & News</span>
-            <h2 >Articles & Blog Posts</h2>
-            <p>Crafting dreams with precision and excellence</p>
-          </div>
-          <div className="row pt-4">
-            <div className="col-md-4">
-              <div className="card shadow border-0">
-              <div className="card-img-top">
-                 <img src={blogImage} className='w-100'/>
-               </div>
-               <div className="card-body p-4">
-                <div className='mb-3'>
-                 <a href='#' className='title'>Dummy Title Here</a>
-                </div>
-                <a href='#' className='btn btn-primary small'>Read More</a>
-               </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card shadow border-0">
-              <div className="card-img-top">
-                 <img src={blogImage} className='w-100'/>
-               </div>
-               <div className="card-body p-4">
-                <div className='mb-3'>
-                 <a href='#' className='title'>Dummy Title Here</a>
-                </div>
-                <a href='#' className='btn btn-primary small'>Read More</a>
-               </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card shadow border-0">
-              <div className="card-img-top">
-                 <img src={blogImage} className='w-100'/>
-               </div>
-               <div className="card-body p-4">
-                <div className='mb-3'>
-                 <a href='#' className='title'>Dummy Title Here</a>
-                </div>
-                <a href='#' className='btn btn-primary small'>Read More</a>
-               </div>
-              </div>
-            </div>
-          </div>
-        </div>
-       </section>
+       <LatestBlogs/>
      </main>
-     <Footer/>
+     {/* <Footer/> */}
     </>
   )
 }

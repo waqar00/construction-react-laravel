@@ -7,7 +7,6 @@ import Hero from '../common/Hero';
 const About = () => {
   return (
     <>
-       <Header/>
        <Hero preHeading={'Quality. Integrity. Value. '} heading={'About Us'} text={'Crafting dreams with precision and excellence'}/>
         <AboutNew/>
         {/* Out Team */}
@@ -99,7 +98,6 @@ const About = () => {
           </div>
           </div>
         </section>
-        <Footer/>
     </>
 
   )

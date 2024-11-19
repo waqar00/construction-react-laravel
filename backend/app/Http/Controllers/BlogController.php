@@ -2,24 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Image;
-use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\ServiceStoreRequest;
 
-class ProjectController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $projects = Project::with('image')->get();
+        $blogs = Blog::with('image')->get();
         return response()->json([
             'status'=>true,
-            'data'=>$projects
+            'data'=>$blogs
         ]);
     }
 
@@ -34,27 +33,24 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ServiceStoreRequest $request)
+    public function store(Request $request)
     {
-        $project = new Project;
-        $project->title = $request->title;
-        $project->slug = Str::slug($request->title);
-        $project->content = $request->content;
-        $project->short_desc = $request->short_desc;
-        $project->status = $request->status;
-        $project->construction_type = $request->construction_type;
-        $project->sector = $request->sector;
-        $project->location = $request->location;
-        $project->save();
+        $blog = new Blog;
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+        $blog->content = $request->content;
+        $blog->status = $request->status;
+        $blog->author = $request->author;
+        $blog->save();
         if ($request->hasFile('image')) {
             $file = $request->image;
-            $path='images/projects';
+            $path='images/blogs';
             $file_name=$this->upload_file($file ,$path);
             if ($file_name) {
-                // Make sure that $project is defined and has a valid images() method
+                // Make sure that $blog is defined and has a valid images() method
                 $image = new Image();
                 $image->url = $file_name;
-                $project->image()->save($image);
+                $blog->image()->save($image);
             } else {
                 // Handle the case where upload_file() fails to return a value
                 return 0;
@@ -62,8 +58,8 @@ class ProjectController extends Controller
         }
         return response()->json([
             'status' => true,
-            'data' => $project,
-            'message' => 'Project added.'
+            'data' => $blog,
+            'message' => 'Blog added.'
         ]);
     }
 
@@ -72,12 +68,20 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project =Project::with('image')->find($id);
+        $blog =Blog::with('image')->find($id);
         return response()->json([
             'status' => true,
-            'data' => $project,
-            'message' => 'project By ID.'
+            'data' => $blog,
+            'message' => 'blog By ID.'
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Blog $blog)
+    {
+        //
     }
 
     /**
@@ -85,31 +89,28 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $project =Project::find($id);
-        $project->title = $request->title;
-        $project->content = $request->content;
-        $project->short_desc = $request->short_desc;
-        $project->status = $request->status;
-        $project->construction_type = $request->construction_type;
-        $project->sector = $request->sector;
-        $project->location = $request->location;
-        $project->save();
+        $blog =Blog::find($id);
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+        $blog->author = $request->author;
+        $blog->status = $request->status;
+        $blog->save();
         if ($request->has('image')) {
-            $image = $project->image; // Assuming this returns a single instance
+            $image = $blog->image; // Assuming this returns a single instance
 
-            if ($image && Storage::exists('images/projects/' . $image->url)) {
-                Storage::delete('images/projects/' . $image->url);
+            if ($image && Storage::exists('images/blogs/' . $image->url)) {
+                Storage::delete('images/blogs/' . $image->url);
             }
 
-            $project->image()->delete();
+            $blog->image()->delete();
 
                 // Make sure that upload_file() is defined and returns a value
-                $file_name = $this->upload_file($request->image, 'images/projects');
+                $file_name = $this->upload_file($request->image, 'images/blogs');
                 if ($file_name) {
-                    // Make sure that $project is defined and has a valid images() method
+                    // Make sure that $blog is defined and has a valid images() method
                     $image = new Image;
                     $image->url = $file_name;
-                    $project->image()->save($image);
+                    $blog->image()->save($image);
                 } else {
                     // Handle the case where upload_file() fails to return a value
                     return false;
@@ -117,8 +118,8 @@ class ProjectController extends Controller
         }
         return response()->json([
             'status' => true,
-            'data' => $project,
-            'message' => 'Project updated.'
+            'data' => $blog,
+            'message' => 'Blog updated.'
         ]);
     }
 
@@ -127,12 +128,12 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        $project =Project::with('image')->find($id);
-        $project->delete();
+        $blog =Blog::with('image')->find($id);
+        $blog->delete();
         return response()->json([
             'status' => true,
-            'data' => $project,
-            'message' => 'Project Deleted.'
+            'data' => $blog,
+            'message' => 'blog Deleted.'
         ]);
     }
     function upload_file($file, $path)

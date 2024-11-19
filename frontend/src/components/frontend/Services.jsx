@@ -4,22 +4,22 @@ import Footer from '../common/Footer'
 import Hero from '../common/Hero'
 import serviceImage from '../../assets/images/construction1.jpg';
 import { apiUrl, fileUrl } from '../common/http';
+import { useLoaderData } from 'react-router-dom';
 
 
 const Services = () => {
-
-  const [services, setServices] = useState([]);
-  const fetchAllServices = async () => {
-    const res = await fetch(apiUrl + 'get-all-services');
-    const result = await res.json();
-    setServices(result.data);
-  }
-  useEffect(() => {
-    fetchAllServices()
-  }, [])
+  const services = useLoaderData();
+  // const [services, setServices] = useState([]);
+  // const fetchAllServices = async () => {
+  //   const res = await fetch(apiUrl + 'get-all-services');
+  //   const result = await res.json();
+  //   setServices(result.data);
+  // }
+  // useEffect(() => {
+  //   fetchAllServices()
+  // }, [])
   return (
     <>
-      <Header />
       <Hero
         preHeading='Quality. Integrity. Value.'
         heading={'Services'}
@@ -61,9 +61,13 @@ const Services = () => {
           </div>
         </div>
       </section>
-      <Footer />
+
     </>
   )
 }
-
-export default Services
+const fetchAllServices = async () =>{
+  const res = await fetch(apiUrl + 'get-all-services');
+  const result = await res.json();
+  return result.data;
+}
+export { Services as default , fetchAllServices }
