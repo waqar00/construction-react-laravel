@@ -22,6 +22,9 @@ import {default as EditProject} from './components/backend/project/Edit';
 import {default as ShowBlog} from './components/backend/blog/Show';
 import {default as CreateBlog} from './components/backend/blog/Create';
 import {default as EditBlog} from './components/backend/blog/Edit';
+import {default as CreateTestimonial} from './components/backend/testimonials/Create';
+import {default as ShowTestimonial} from './components/backend/testimonials/Show';
+import {default as EditTestimonial} from './components/backend/testimonials/Edit';
 import ServiceDetails from './components/frontend/ServiceDetails';
 import Layout from './components/layout/Layout';
 function App() {
@@ -97,6 +100,27 @@ function App() {
             <EditBlog/>
           </RequiredAuth>
           }/>
+          <Route path='/admin/testimonial/create'
+             element = {
+              <RequiredAuth>
+                <CreateTestimonial/>
+              </RequiredAuth>
+             }
+          />
+          <Route path='/admin/testimonial/edit/:id'
+            element = {
+              <RequiredAuth>
+                <EditTestimonial/>
+              </RequiredAuth>
+            }
+          />
+          <Route path='/admin/testimonials'
+            element = {
+              <RequiredAuth>
+                <ShowTestimonial/>
+              </RequiredAuth>
+            }
+          />
       </Route>
     )
   )

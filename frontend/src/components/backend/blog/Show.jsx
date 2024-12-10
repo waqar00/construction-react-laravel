@@ -46,7 +46,6 @@ const Show = () => {
     },[])
        return (
         <>
-            <Header />
             <main>
                 <div className="container my-5">
                     <div className="row">
@@ -73,6 +72,7 @@ const Show = () => {
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+                                        
                                         <tbody>
                                             {
                                                 blogs && blogs.map(blog =>{
@@ -110,7 +110,6 @@ const Show = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

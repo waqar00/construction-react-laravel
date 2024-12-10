@@ -7,7 +7,6 @@ const Dashboard = () => {
     const navigate = useNavigate();
   return (
     <>
-     <Header/>
      <main>
         <div className="container my-5">
         <div className="row">
@@ -25,7 +24,6 @@ const Dashboard = () => {
         </div>
         </div>
      </main>
-     <Footer/>
     </>
   )
 }

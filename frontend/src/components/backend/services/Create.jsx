@@ -79,7 +79,6 @@ const Create = ({ placeholder }) => {
     }
     return (
         <>
-            <Header />
             <main>
                 <div className="container my-5">
                     <div className="row">
@@ -159,7 +158,6 @@ const Create = ({ placeholder }) => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

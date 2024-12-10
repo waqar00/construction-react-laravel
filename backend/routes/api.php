@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,9 @@ Route::get('get-all-projects',[FrontController::class ,'getAllProjects']);
 Route::get('get-latest-blogs',[FrontController::class ,'getLatestBlogs']);
 Route::get('get-all-blogs',[FrontController::class ,'getAllBlogs']);
 
+//testimonial
+Route::get('get-all-testimonial',[FrontController::class ,'getAllTestimonial']);
+
 Route::get('service-details/{slug}',[ServiceController::class ,'serviceDetails']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
@@ -33,4 +37,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('services',ServiceController::class);
     Route::apiResource('projects',ProjectController::class);
     Route::apiResource('blogs',BlogController::class);
+    Route::apiResource('testimonials',TestimonialController::class);
 });

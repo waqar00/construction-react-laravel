@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -16,6 +17,14 @@ class FrontController extends Controller
         return response()->json([
             'status' => true,
             'data' => $services
+        ]);
+    }
+    public function getAllTestimonial()
+    {
+        $testimonial = Testimonial::with('image')->where('status', 1)->latest()->get();
+        return response()->json([
+            'status' => true,
+            'data' => $testimonial
         ]);
     }
 

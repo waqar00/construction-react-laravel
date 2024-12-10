@@ -1,9 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
-import Footer from '../../common/Footer'
 import JoditEditor from 'jodit-react'
 import { Link, useNavigate } from 'react-router-dom'
 import Sidebar from '../../common/Sidebar'
-import Header from '../../common/Header'
 import { useForm } from 'react-hook-form'
 import { apiUrl, token } from '../../common/http';
 import { toast } from 'react-toastify';
@@ -54,7 +52,6 @@ const Create = ({placeholder}) => {
     }
     return (
         <>
-            <Header />
             <main>
                 <div className="container my-5">
                     <div className="row">
@@ -143,7 +140,6 @@ const Create = ({placeholder}) => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }
