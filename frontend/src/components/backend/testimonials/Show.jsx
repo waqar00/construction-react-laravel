@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../../common/Sidebar'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { apiUrl, fileUrl, token } from '../../common/http'
+import { toast } from 'react-toastify'
 
 const Show = () => {
+    const params = useParams();
     const [testimonials , setTestimonials] =useState([]);
     const fetchTestimonials = async () => {
         try {
@@ -29,7 +31,22 @@ const Show = () => {
     };
     
     const deleteTestimonial = async (id) =>{
-
+          if(confirm('Are you sure you want to delete')){
+             const res = await fetch(apiUrl + 'testimonials/' + id ,{
+                method : 'DELETE',
+                headers : {
+                    'Authorization' : `Bearer ${token()}`
+                }
+             })
+             const result = await res.json();
+             if(result.status = true){
+                 const newProject = testimonials.filter(testimonial => testimonial.id != id);
+                 setTestimonials(newProject);
+                 toast.success(result.message);
+               }else{
+                toast.error(result.message)
+               }
+          }
     }
     useEffect(()=>{
         fetchTestimonials();

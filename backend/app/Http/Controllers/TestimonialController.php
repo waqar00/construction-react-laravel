@@ -56,25 +56,66 @@ class TestimonialController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Testimonial $testimonial)
+    public function show($id)
     {
-        //
+        $testimonial =Testimonial::with('image')->find($id);
+        return response()->json([
+            'status' => true,
+            'data' => $testimonial,
+            'message' => 'Testimonial By ID.'
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(Request $request, $id)
     {
-        //
+        $testimonial =Testimonial::find($id);
+        $testimonial->testimonial = $request->testimonial;
+        $testimonial->citation = $request->citation;
+        $testimonial->status = $request->status;
+        $testimonial->save();
+        if ($request->has('image')) {
+            $image = $testimonial->image; // Assuming this returns a single instance
+
+            if ($image && Storage::exists('images/testimonials/' . $image->url)) {
+                Storage::delete('images/testimonials/' . $image->url);
+            }
+
+            $testimonial->image()->delete();
+
+                // Make sure that upload_file() is defined and returns a value
+                $file_name = $this->upload_file($request->image, 'images/testimonials');
+                if ($file_name) {
+                    // Make sure that $testimonial is defined and has a valid images() method
+                    $image = new Image;
+                    $image->url = $file_name;
+                    $testimonial->image()->save($image);
+                } else {
+                    // Handle the case where upload_file() fails to return a value
+                    return false;
+                }
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $testimonial,
+            'message' => 'testimonial updated.'
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Testimonial $testimonial)
+    public function destroy($id)
     {
-        //
+        $testimonial =Testimonial::with('image')->find($id);
+        $testimonial->delete();
+        return response()->json([
+            'status' => true,
+            'data' => $testimonial,
+            'message' => 'Testimonial Deleted.'
+        ]);
     }
     function upload_file($file, $path)
     {

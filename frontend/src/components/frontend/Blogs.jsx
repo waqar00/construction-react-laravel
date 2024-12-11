@@ -43,7 +43,7 @@ const Blogs = () => {
                    </div>
                    <div className="card-body p-4">
                     <div className='mb-3'>
-                     <a href='#' className='title'>Dummy Title Here</a>
+                     <a href='#' className='title'>{blog.title}</a>
                     </div>
                     <a href='#' className='btn btn-primary small'>Read More</a>
                    </div>
