@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../common/Header'
-import Footer from '../common/Footer'
 import Hero from '../common/Hero'
-import projectImage from '../../assets/images/construction10.jpg';
 import { apiUrl, fileUrl } from '../common/http';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Projects = () => {
   const projects = useLoaderData();
@@ -38,7 +35,7 @@ const Projects = () => {
             {
               projects && projects.map((project) => {
                 return (
-                  <div className="col-md-4">
+                  <div className="col-md-4" key={`project-${project.id}`}>
                     <div className="item">
                       <div className="service-image">
                         {
@@ -54,7 +51,7 @@ const Projects = () => {
                             {project.short_desc}
                           </p>
                         </div>
-                        <a href='' className='btn btn-primary'>Read More</a>
+                        <Link to={'/projects/' + project.slug} className='btn btn-primary'>Read More</Link>
                       </div>
                     </div>
                   </div>

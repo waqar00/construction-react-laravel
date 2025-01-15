@@ -148,4 +148,14 @@ class BlogController extends Controller
         $file->move($upload_path, $file_name);
         return $file_name;
     }
+
+    public function blogtDetails($slug)
+    {
+        $blog =Blog::with('image')->whereSlug($slug)->first();
+        return response()->json([
+            'status' => true,
+            'data' => $blog,
+            'message' => 'blog Details.'
+        ]);
+    }
 }

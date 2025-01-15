@@ -44,7 +44,7 @@ const LatestProjects = () => {
                                                     {project.short_desc}
                                                 </p>
                                             </div>
-                                            <Link to={`details/${project.id}`} className='btn btn-primary'>Read More</Link>
+                                            <Link to={'/projects/' + project.slug} className='btn btn-primary'>Read More</Link>
                                         </div>
                                     </div>
                                 </div>

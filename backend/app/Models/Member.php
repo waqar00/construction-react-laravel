@@ -5,22 +5,15 @@ namespace App\Models;
 use App\Models\Image;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Member extends Model
 {
-
     protected $fillable = [
-        'title',
-        'slug',
-        'author',
-        'content',
+        'name',
+        'job_title',
+        'linkedin_url',
         'status',
     ];
-    protected function casts(): array
-{
-    return [
-        'created_at' => 'datetime:d, M Y',
-    ];
-}
+
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');

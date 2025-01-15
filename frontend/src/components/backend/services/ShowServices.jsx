@@ -46,7 +46,6 @@ const ShowServices = () => {
     },[]);
     return (
         <>
-            <Header />
             <main>
                 <div className="container my-5">
                     <div className="row">
@@ -103,7 +102,6 @@ const ShowServices = () => {
                     </div>
                 </div>
             </main>
-            <Footer />
         </>
     )
 }

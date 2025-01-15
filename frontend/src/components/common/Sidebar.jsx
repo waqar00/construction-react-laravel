@@ -26,6 +26,9 @@ const Sidebar = () => {
                             <NavLink to="/admin/testimonials">Testimonials</NavLink>
                         </li>
                         <li>
+                            <NavLink to="/admin/members">Members</NavLink>
+                        </li>
+                        <li>
                             <button onClick={logout} className='btn btn-primary mt-4'>Logout</button>
                         </li>
                     </ul>

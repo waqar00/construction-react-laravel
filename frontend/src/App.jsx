@@ -25,8 +25,13 @@ import {default as EditBlog} from './components/backend/blog/Edit';
 import {default as CreateTestimonial} from './components/backend/testimonials/Create';
 import {default as ShowTestimonial} from './components/backend/testimonials/Show';
 import {default as EditTestimonial} from './components/backend/testimonials/Edit';
+import {default as CreateMember} from './components/backend/member/Create';
+import {default as ShowMember} from './components/backend/member/Show';
+import {default as EditMember} from './components/backend/member/Edit';
 import ServiceDetails from './components/frontend/ServiceDetails';
 import Layout from './components/layout/Layout';
+import ProjectDetails from './components/frontend/ProjectDetails';
+import BlogDetails, { fetchAllblogs } from './components/frontend/BlogDetails';
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -38,14 +43,20 @@ function App() {
             path='/services' 
             element={<Services/>}
          />
-        <Route  
+        <Route 
+            loader={fetchAllServices} 
             path='/services/:slug' 
             element={<ServiceDetails/>}
         />
-        <Route  
-          loader={fetchAllProjects}
-          path='/projects' 
-          element={<Projects/>}
+        <Route 
+            loader={fetchAllProjects} 
+            path='/projects/:slug' 
+            element={<ProjectDetails/>}
+        />
+        <Route 
+            loader={ fetchAllblogs} 
+            path='/blog/:slug' 
+            element={<BlogDetails/>}
         />
         <Route  path='/blogs' element={<Blogs/>}/>
         <Route  path='/contact-us' element={<ContactUs/>}/>
@@ -118,6 +129,27 @@ function App() {
             element = {
               <RequiredAuth>
                 <ShowTestimonial/>
+              </RequiredAuth>
+            }
+          />
+          <Route path='/admin/members'
+            element = {
+              <RequiredAuth>
+                <ShowMember/>
+              </RequiredAuth>
+            }
+          />
+          <Route path='/admin/members/create'
+            element = {
+              <RequiredAuth>
+                <CreateMember/>
+              </RequiredAuth>
+            }
+          />
+          <Route path='/admin/members/edit/:id'
+            element = {
+              <RequiredAuth>
+                <EditMember/>
               </RequiredAuth>
             }
           />

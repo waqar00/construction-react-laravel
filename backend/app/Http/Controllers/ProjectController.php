@@ -23,6 +23,15 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function projectDetails(Request $request ,$slug)
+    {
+        $project =Project::with('image')->whereSlug($slug)->first();
+        return response()->json([
+            'status' => true,
+            'data' => $project,
+            'message' => 'project Details.'
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -4,7 +4,7 @@ import Footer from '../common/Footer'
 import Hero from '../common/Hero'
 import serviceImage from '../../assets/images/construction1.jpg';
 import { apiUrl, fileUrl } from '../common/http';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 
 const Services = () => {
@@ -50,7 +50,7 @@ const Services = () => {
                           { service.short_desc}
                         </p>
                       </div>
-                      <a href='' className='btn btn-primary'>Read More</a>
+                      <Link to={'/services/' + service.slug} className='btn btn-primary'>Read More</Link>
                     </div>
                   </div>
                 </div>

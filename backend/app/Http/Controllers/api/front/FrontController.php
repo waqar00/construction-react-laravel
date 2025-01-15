@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\api\front;
 
-use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Member;
 use App\Models\Project;
 use App\Models\Service;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
 {
@@ -25,6 +26,14 @@ class FrontController extends Controller
         return response()->json([
             'status' => true,
             'data' => $testimonial
+        ]);
+    }
+    public function getAllmembers()
+    {
+        $members = Member::with('image')->where('status', 1)->latest()->get();
+        return response()->json([
+            'status' => true,
+            'data' => $members
         ]);
     }
 

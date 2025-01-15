@@ -4,6 +4,7 @@ import Footer from '../common/Footer'
 import Hero from '../common/Hero'
 import blogImage from '../../assets/images/construction2.jpg';
 import { apiUrl, fileUrl } from '../common/http';
+import { Link } from 'react-router-dom';
 const Blogs = () => {
   const [blogs ,setBlogs] = useState([]);
   const fetchAllBlogs = async () =>{
@@ -32,22 +33,22 @@ const Blogs = () => {
             {
               blogs && blogs.map((blog) => {
                 return (
-                  <div className="col-md-4">
-                  <div className="card shadow border-0">
-                  <div className="card-img-top">
-                    {
-                      blog.image && <img src={fileUrl + 'images/blogs/' + blog.image?.url} className='w-100'
-                      style={{ height: '200px', objectFit: 'cover' }}
-                      />
-                    }
-                   </div>
-                   <div className="card-body p-4">
-                    <div className='mb-3'>
-                     <a href='#' className='title'>{blog.title}</a>
+                  <div className="col-md-4" key={`blog-${blog.id}`}>  
+                    <div className="card shadow border-0">
+                    <div className="card-img-top">
+                      {
+                        blog.image && <img src={fileUrl + 'images/blogs/' + blog.image?.url} className='w-100'
+                        style={{ height: '200px', objectFit: 'cover' }}
+                        />
+                      }
                     </div>
-                    <a href='#' className='btn btn-primary small'>Read More</a>
-                   </div>
-                  </div>
+                    <div className="card-body p-4">
+                      <div className='mb-3'>
+                      <a href='#' className='title'>{blog.title}</a>
+                      </div>
+                      <Link to={'/blog/' + blog.slug} className='btn btn-primary'>Read More</Link>
+                    </div>
+                    </div>
                 </div>
                 )
               })
